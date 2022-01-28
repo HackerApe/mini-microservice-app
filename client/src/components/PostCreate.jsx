@@ -6,7 +6,15 @@ export default function PostCreate() {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    await axios.post("http://localhost:4000/posts", { title })
+    await axios.post(
+      "http://localhost:4000/posts",
+      { title },
+      {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    )
     setTitle("")
   }
 

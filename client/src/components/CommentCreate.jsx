@@ -3,9 +3,12 @@ import axios from "axios"
 
 export default function CommentCreate({ postId }) {
   const [comment, setComment] = useState("")
+
   const handleSubmit = async (event) => {
     event.preventDefault()
-    axios.post(`http://localhost:4001/posts/${postId}/comments`, { comment })
+    await axios.post(`http://localhost:4001/posts/${postId}/comments`, {
+      comment
+    })
   }
 
   const handleChange = (event) => setComment(event.target.value)
@@ -22,7 +25,7 @@ export default function CommentCreate({ postId }) {
             onChange={handleChange}
           />
         </div>
-        <button className='btn btn-primary'>Add Comment</button>
+        <button className='btn btn-primary mt-3'>Add Comment</button>
       </form>
     </div>
   )
